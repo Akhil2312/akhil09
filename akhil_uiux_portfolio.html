@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akhil Eda | Senior UI/UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; --bg2:#121933; --panel:rgba(17,25,51,.78); --panel2:rgba(21,31,61,.92);
+      --text:#f7f9ff; --muted:#b9c3de; --line:rgba(255,255,255,.10);
+      --accent:#8b5cf6; --accent2:#06b6d4; --accent3:#f59e0b; --shadow:0 24px 60px rgba(0,0,0,.30);
+      --radius:26px; --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{
+      margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(139,92,246,.25), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(6,182,212,.18), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(245,158,11,.08), transparent 30%),
+        linear-gradient(180deg,#070b16 0%,#0b1020 45%,#101933 100%);
+    }
+    a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+    .glass{background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(8,12,23,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+    .brand{font-weight:800;letter-spacing:.02em;font-size:1.05rem}.brand span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .nav-links{display:flex;gap:22px;flex-wrap:wrap}.nav-links a{color:#d8e0f7;font-size:.95rem}.nav-links a:hover{color:#fff}
+    .hero{padding:56px 0 30px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}.hero-card{padding:38px}
+    .eyebrow,.section-kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:#e8edff;font-weight:600;font-size:.92rem}
+    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 0 5px rgba(139,92,246,.12)}
+    h1{font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.02;margin:18px 0 16px;letter-spacing:-.04em}
+    .gradient{background:linear-gradient(90deg,#fff 0%,#c7b9ff 45%,#86ecff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .lead{color:var(--muted);font-size:1.06rem;line-height:1.9;max-width:760px;margin:0 0 24px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 30px}.chip{padding:10px 14px;border-radius:999px;font-size:.9rem;color:#eef3ff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .cta-row{display:flex;flex-wrap:wrap;gap:14px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:999px;font-weight:700;transition:.25s ease;border:1px solid rgba(255,255,255,.12)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;box-shadow:0 16px 32px rgba(6,182,212,.16)} .btn.secondary{background:rgba(255,255,255,.04);color:#fff}.btn:hover{transform:translateY(-2px)}
+    .photo-card{padding:18px;position:relative;overflow:hidden;background:radial-gradient(circle at top right, rgba(6,182,212,.22), transparent 26%),radial-gradient(circle at left bottom, rgba(139,92,246,.18), transparent 28%),var(--panel2)}
+    .photo{position:relative;z-index:1;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)} .photo img{width:100%;height:100%;object-fit:cover}
+    .photo-caption{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .mini-stat{padding:14px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)} .mini-stat strong{display:block;font-size:1.15rem}.mini-stat span{color:var(--muted);font-size:.88rem}
+    section{padding:34px 0}.section-head{margin-bottom:24px} h2{font-size:clamp(1.9rem,3.8vw,3rem);margin:0 0 10px;line-height:1.08;letter-spacing:-.03em}
+    .section-copy{margin:0;color:var(--muted);line-height:1.85;max-width:780px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{padding:26px}.card h3{margin:0 0 10px;font-size:1.18rem}.card p{margin:0;color:var(--muted);line-height:1.8}
+    .skills-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.skill-block{padding:28px}.skill-block h3{margin:0 0 16px}
+    .pill-wrap{display:flex;flex-wrap:wrap;gap:10px}.pill{padding:10px 13px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#edf2ff;font-size:.92rem}
+    .highlight-list{display:grid;gap:12px}.highlight{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .icon{width:34px;height:34px;border-radius:12px;flex:0 0 34px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;display:grid;place-items:center;font-weight:800}
+    .highlight b{display:block;margin-bottom:4px}.highlight span{color:var(--muted);line-height:1.6;font-size:.95rem}
+    .timeline{display:grid;gap:18px}.job{padding:28px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02))}
+    .job-top{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:14px}.job h3{margin:0 0 6px;font-size:1.28rem}.company{color:#d8def9;font-weight:700}.date{color:#a9b8dd;font-weight:600}
+    .job p{color:var(--muted);line-height:1.75}.job ul{margin:14px 0 0;padding-left:18px;color:#eaf0ff}.job li{margin:0 0 10px;line-height:1.68}
+    .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .contact-card{padding:24px}
+    .contact-top{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+    .contact-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(139,92,246,.28),rgba(6,182,212,.25));border:1px solid rgba(255,255,255,.10)}
+    .contact-icon svg{width:22px;height:22px;fill:#fff}
+    .contact-label{font-size:.88rem;color:#aebde1;text-transform:uppercase;letter-spacing:.14em}
+    .contact-value{font-size:1.05rem;font-weight:700;line-height:1.5;word-break:break-word}
+    .footer{padding:26px 0 40px;color:#aeb9d7;text-align:center}
+    @media (max-width: 980px){.hero-grid,.skills-layout,.grid-3,.grid-2,.contact-grid{grid-template-columns:1fr}.photo-caption{grid-template-columns:1fr 1fr 1fr}.nav-inner{flex-direction:column;align-items:flex-start}}
+    @media (max-width: 640px){.hero-card,.card,.skill-block,.job,.contact-card{padding:22px}.nav-links{gap:14px}.photo-caption{grid-template-columns:1fr}.cta-row{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Akhil <span>Eda</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="glass hero-card">
+        <div class="eyebrow"><span class="dot"></span> Senior UI/UX Designer • Figma • Design Systems • Accessibility</div>
+        <h1>Designing <span class="gradient">clean, modern, user-centered</span> digital experiences.</h1>
+        <p class="lead">
+          Senior UI/UX Designer with 10+ years of experience designing intuitive, responsive, and accessible web and mobile products. Strong in Figma-driven workflows including wireframes, interactive prototypes, high-fidelity UI, design systems, developer handoff, and WCAG 2.1 aligned product design.
+        </p>
+        <div class="hero-meta">
+          <div class="chip">Figma Expert</div>
+          <div class="chip">Design Systems</div>
+          <div class="chip">User Research</div>
+          <div class="chip">Prototyping</div>
+          <div class="chip">WCAG 2.1</div>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#experience">View Experience</a>
+          <a class="btn secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="glass photo-card">
+        <div class="photo">
+          <img src="profile.jpeg" alt="Akhil Eda profile photo">
+        </div>
+        <div class="photo-caption">
+          <div class="mini-stat"><strong>10+ Years</strong><span>UI/UX Experience</span></div>
+          <div class="mini-stat"><strong>Figma</strong><span>Design Systems & Prototypes</span></div>
+          <div class="mini-stat"><strong>WCAG 2.1</strong><span>Accessible Design</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">About</div>
+        <h2>Strong Figma-focused product designer with enterprise experience</h2>
+        <p class="section-copy">
+          My work blends user research, information architecture, interaction design, accessibility, and modern UI craft. I build scalable design systems, create polished interfaces, and collaborate closely with product managers and engineering teams to deliver consistent, usable, and visually strong digital products.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass card">
+          <h3>Figma-First Workflow</h3>
+          <p>Advanced expertise in Figma for wireframing, Auto Layout, Variants, design tokens, interactive prototyping, and developer-ready handoff.</p>
+        </div>
+        <div class="glass card">
+          <h3>User-Centered Design</h3>
+          <p>Strong foundation in personas, journey maps, usability testing, workflow simplification, and data-informed design decisions.</p>
+        </div>
+        <div class="glass card">
+          <h3>Accessible Product Design</h3>
+          <p>Designs aligned with WCAG 2.1 and Section 508, with focus on keyboard navigation, contrast, semantics, and inclusive UX patterns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container skills-layout">
+      <div class="glass skill-block">
+        <div class="section-kicker">Core Skills</div>
+        <h2>Figma stands at the center of my design toolkit</h2>
+        <div class="pill-wrap">
+          <span class="pill">Figma</span>
+          <span class="pill">Auto Layout</span>
+          <span class="pill">Variants</span>
+          <span class="pill">Interactive Prototypes</span>
+          <span class="pill">Design Systems</span>
+          <span class="pill">Design Tokens</span>
+          <span class="pill">Dev Handoff</span>
+          <span class="pill">FigJam</span>
+          <span class="pill">Wireframing</span>
+          <span class="pill">Journey Mapping</span>
+          <span class="pill">Usability Testing</span>
+          <span class="pill">WCAG 2.1</span>
+          <span class="pill">Responsive Design</span>
+          <span class="pill">Adobe XD</span>
+          <span class="pill">Sketch</span>
+          <span class="pill">Axure RP</span>
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">React.js</span>
+          <span class="pill">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="glass skill-block">
+        <div class="section-kicker">Highlights</div>
+        <div class="highlight-list">
+          <div class="highlight"><div class="icon">1</div><div><b>Figma Design Systems</b><span>Built reusable components, variants, token-based patterns, and consistent product UI foundations.</span></div></div>
+          <div class="highlight"><div class="icon">2</div><div><b>Prototype-Driven Validation</b><span>Created realistic flows for stakeholder reviews, usability tests, and rapid design iteration.</span></div></div>
+          <div class="highlight"><div class="icon">3</div><div><b>Developer Collaboration</b><span>Strong handoff workflow with specs, spacing, annotations, and implementation alignment.</span></div></div>
+          <div class="highlight"><div class="icon">4</div><div><b>Accessible UI</b><span>Designed inclusive interfaces with attention to contrast, states, readability, and interaction clarity.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Experience</div>
+        <h2>Professional journey</h2>
+        <p class="section-copy">A UI/UX portfolio centered on clean design execution, Figma excellence, accessibility, and enterprise workflow modernization.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="glass job">
+          <div class="job-top">
+            <div><h3>Lead UX/UI Designer</h3><div class="company">Eli Lilly • Indianapolis, IN</div></div>
+            <div class="date">Mar 2023 – Present</div>
+          </div>
+          <p>Leading end-to-end UX/UI design for enterprise healthcare products with strong focus on Figma systems, interactive prototyping, accessibility, and collaborative product delivery.</p>
+          <ul>
+            <li>Owned and scaled enterprise Figma design systems with reusable components, Auto Layout, Variants, and naming standards.</li>
+            <li>Created high-fidelity Figma prototypes for complex workflows and real user scenarios.</li>
+            <li>Used Figma Dev Mode and handoff workflows to support pixel-accurate implementation.</li>
+            <li>Improved task efficiency through usability testing, workflow redesign, and data-informed UX decisions.</li>
+          </ul>
+        </div>
+
+        <div class="glass job">
+          <div class="job-top">
+            <div><h3>Senior UX/UI Designer</h3><div class="company">Fiserv • Atlanta, GA</div></div>
+            <div class="date">Jan 2021 – Feb 2023</div>
+          </div>
+          <p>Designed enterprise banking and payment experiences with strong emphasis on Figma design systems, adaptive interfaces, workflow clarity, and accessibility compliance.</p>
+          <ul>
+            <li>Built scalable Figma component systems and reusable patterns across financial products.</li>
+            <li>Designed interactive prototypes for stakeholder validation and faster iteration cycles.</li>
+            <li>Integrated research, personas, and journey mapping into UX workflows.</li>
+            <li>Partnered with engineering using Figma handoff and detailed design specifications.</li>
+          </ul>
+        </div>
+
+        <div class="glass job">
+          <div class="job-top">
+            <div><h3>UX/UI Designer</h3><div class="company">US Bank • TX</div></div>
+            <div class="date">Nov 2018 – Dec 2020</div>
+          </div>
+          <p>Enhanced banking experiences using Figma-based wireframes, responsive UI design, accessibility improvements, and user-focused workflow refinement.</p>
+          <ul>
+            <li>Created wireframes, user flows, and prototypes for account and transaction workflows.</li>
+            <li>Built reusable UI patterns aligned with scalable design systems.</li>
+            <li>Improved usability through validation flow redesign, cleaner interactions, and accessibility-focused enhancements.</li>
+          </ul>
+        </div>
+
+        <div class="glass job">
+          <div class="job-top">
+            <div><h3>UI/UX Developer</h3><div class="company">Zen Q • Hyderabad, India</div></div>
+            <div class="date">Aug 2015 – Mar 2018</div>
+          </div>
+          <p>Contributed to user-centered web applications by translating design handoffs into responsive, accessible, and maintainable interfaces.</p>
+        </div>
+
+        <div class="glass job">
+          <div class="job-top">
+            <div><h3>UI Developer</h3><div class="company">Sonata Software • Hyderabad, India</div></div>
+            <div class="date">Jan 2015 – Jul 2015</div>
+          </div>
+          <p>Supported the development of structured, user-friendly enterprise interfaces with responsive layouts and usability improvements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Education</div>
+        <h2>Academic foundation</h2>
+      </div>
+      <div class="grid-2">
+        <div class="glass card">
+          <h3>Bachelor’s in Computer Science Engineering</h3>
+          <p>PVP Siddhartha Institute of Technology, India<br>Graduated: June 2014</p>
+        </div>
+        <div class="glass card">
+          <h3>Tools & Collaboration</h3>
+          <p>Jira, SharePoint, Confluence, Agile/Scrum, GitHub, GitLab, Bitbucket, Jenkins, Lighthouse, React Profiler.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Contact</div>
+        <h2>Let’s connect</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="glass contact-card">
+          <div class="contact-top">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.2-.5 7.8 6 7.8-6H4.2Zm15.8 2.03-7.39 5.69a1 1 0 0 1-1.22 0L4 7.03V18.5c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V7.03Z"/></svg>
+            </div>
+            <div class="contact-label">Email</div>
+          </div>
+          <div class="contact-value"><a href="mailto:akhilthinks23@gmail.com">akhilthinks23@gmail.com</a></div>
+        </div>
+
+        <div class="glass contact-card">
+          <div class="contact-top">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.32.56 3.57.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.06 21 3 13.94 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.19 2.45.56 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/></svg>
+            </div>
+            <div class="contact-label">Phone</div>
+          </div>
+          <div class="contact-value"><a href="tel:+19808255956">+1 980-825-5956</a></div>
+        </div>
+
+        <div class="glass contact-card">
+          <div class="contact-top">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.17c-3.2.69-3.88-1.36-3.88-1.36-.52-1.31-1.28-1.66-1.28-1.66-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.68 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19a10.95 10.95 0 0 1 5.79 0c2.2-1.5 3.17-1.19 3.17-1.19.64 1.58.24 2.75.12 3.04.75.81 1.2 1.84 1.2 3.1 0 4.42-2.69 5.38-5.26 5.66.42.36.79 1.08.79 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            </div>
+            <div class="contact-label">GitHub</div>
+          </div>
+          <div class="contact-value"><a href="https://github.com/Akhil2312" target="_blank">github.com/Akhil2312</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    © <span id="year"></span> Akhil Eda • Senior UI/UX Designer Portfolio
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
